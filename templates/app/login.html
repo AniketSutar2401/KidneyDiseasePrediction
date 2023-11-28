@@ -1,0 +1,42 @@
+{% extends "app/base.html" %}
+{% block content %}
+<nav id="breadcrumbs" class="breadcrumbs">
+	<div class="container page-wrapper">
+		<a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Login</span>
+	</div>
+</nav>
+<section class="w3l-contact-main">
+		<div class="contact-infhny py-5">
+			<div class="container py-lg-5">
+				<div class="title-content text-left mb-lg-5 mt-4">
+					<h6 class="sub-title">Login</h6>
+					<h3 class="hny-title">Explore our services.</h3>
+				</div>
+				<div class="row align-form-map">
+					<div class="col-lg-8 form-inner-cont">
+						<form method="post" class="signin-form">
+							{%csrf_token%}
+							<div class="form-input">
+								<label for="w3lName">Login As*</label>
+								<input type="radio" name="role" value="admin" style="all: revert;" checked required/> Admin
+								<input type="radio" name="role" value="patient" style="all: revert;" required/> Patient
+							</div>
+							<div class="form-input">
+								<label for="w3lName">Mobile Number*</label>
+								<input type="text" name="mobile" pattern="[789][0-9]{9}" required/>
+							</div>
+							<div class="form-input">
+								<label for="w3lSender">Password*</label>
+								<input type="password" name="password" required/>
+							</div>
+							<button type="submit" class="btn btn-contact">Login</button>
+							<div class="form-input">
+								<label class="text-danger">{{message}}</label>
+							</div>
+						</form>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

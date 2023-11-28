@@ -1,0 +1,45 @@
+{% extends "app/base.html" %}
+{% block content %}
+<nav id="breadcrumbs" class="breadcrumbs">
+    <div class="container page-wrapper">
+        <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Patient Registration</span>
+    </div>
+</nav>
+<section class="w3l-contact-main">
+    <div class="contact-infhny py-5">
+        <div class="container py-lg-5">
+            <div class="title-content text-left mb-lg-5 mt-4">
+                <h6 class="sub-title">Patient Registration</h6>
+                <h3 class="hny-title">Explore our services.</h3>
+            </div>
+            <div class="row align-form-map">
+                <div class="col-lg-8 form-inner-cont">
+                    <form method="post" class="signin-form">
+                        {%csrf_token%}
+                        <div class="form-input">
+                            <label>Name*</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-input">
+                            <label>Mobile*</label>
+                            <input type="text" name="mobile" required>
+                        </div>
+                        <div class="form-input">
+                            <label>Password*</label>
+                            <input type="password" name="password" required>
+                        </div>
+                        <div class="form-input">
+                            <label>Address*</label>
+                            <textarea name="address" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-contact">Register</button>
+                        <div class="form-input">
+                            <label class="text-info">{{message}}</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

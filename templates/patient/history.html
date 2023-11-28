@@ -1,0 +1,87 @@
+{% extends "patient/base.html" %}
+{% block content %}
+<nav id="breadcrumbs" class="breadcrumbs">
+    <div class="container page-wrapper">
+        <a href="login">Logout</a> » <span class="breadcrumb_last" aria-current="page">Upload Dataset</span>
+    </div>
+</nav>
+<section class="w3l-contact-main">
+    <div class="contact-infhny py-5">
+        <div class="container py-lg-5">
+            <div class="title-content text-left mb-lg-5 mt-4">
+                <h6 class="sub-title">Bringing Best.</h6>
+                <h3 class="hny-title">History</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <label class="text-info">{{message}}</label>
+                    <div class="table-responsive">
+                        <table id="patients" class="table table-stripped">
+                            <thead>
+                            <tr>
+                                <th>Age</th>
+                                <th>Blood Pressure (mm/Hg)</th>
+                                <th>Specific Gravity</th>
+                                <th>Albumin</th>
+                                <th>Sugar Degree</th>
+                                <th>Red Blood Cells(1 for normal, 0 for abnormal)</th>
+                                <th>Pus Cell(1 for normal, 0 for abnormal)</th>
+                                <th>Pus Cell Clumps(1 for present, 0 for notpresent)</th>
+                                <th>Bacteria(1 for present, 0 for notpresent)</th>
+                                <th>Blood Glucose Random (mgs/dl)</th>
+                                <th>Blood Urea (mgs/dl)</th>
+                                <th>Cerum Creatinine (mgs/dl)</th>
+                                <th>Sodium (mEq/L)</th>
+                                <th>Potassium (mEq/L)</th>
+                                <th>Hemoglobin (gms)</th>
+                                <th>Packed Cell Volume</th>
+                                <th>Hypertension(1 for yes / 0 for no)</th>
+                                <th>Appetite(0 for good / 1 for poor)</th>
+                                <th>Pedal edema(1 for yes / 0 for no)</th>
+                                <th>Anemia(1 for yes / 0 for no)</th>
+                                <th>Result</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for patient in patients %}
+                            <tr>
+                                <td>{{ patient.age }}</td>
+                                <td>{{ patient.bp }}</td>
+                                <td>{{ patient.sg }}</td>
+                                <td>{{ patient.al }}</td>
+                                <td>{{ patient.su }}</td>
+                                <td>{{ patient.rbc }}</td>
+                                <td>{{ patient.pc }}</td>
+                                <td>{{ patient.pcc }}</td>
+                                <td>{{ patient.ba }}</td>
+                                <td>{{ patient.bgr }}</td>
+                                <td>{{ patient.bu }}</td>
+                                <td>{{ patient.sc }}</td>
+                                <td>{{ patient.sod }}</td>
+                                <td>{{ patient.pot }}</td>
+                                <td>{{ patient.hemo }}</td>
+                                <td>{{ patient.pcv }}</td>
+                                <td>{{ patient.htn }}</td>
+                                <td>{{ patient.appet }}</td>
+                                <td>{{ patient.pe }}</td>
+                                <td>{{ patient.ane }}</td>
+                                <td>{{ patient.result }}</td>
+                                <td>
+                                    <form method="post">
+                                        {%csrf_token%}
+                                        <input type="hidden" name="id" value="{{ patient.id }}" required>
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
